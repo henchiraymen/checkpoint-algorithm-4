@@ -1,16 +1,21 @@
 ALGORITHM Insertion_sort
 VAR
-    arr : ARRAY_OF INTEGER[20];
+    arr : 
     i,j : INTEGER;
-    aux : INTEGER;
+    k : INTEGER;
+    t : ARRAY_OF INTEGER[20];
 BEGIN
-    FOR i FROM 1 TO arr.length-1 DO
-        FOR j FROM i TO 1 STEP -1 DO
-            IF (arr[j] < arr[j-1]) THEN
-                aux = arr[j];
-                arr[j] = arr[j-1];
-                arr[j-1] = aux;
-            END_IF
-        END_FOR
-    END_FOR
+    j := 1;
+    //begin of first loop
+    WHILE (j < t.length) DO
+        i:= j-1;
+        k:= t[j];
+        //begin of second loop
+        WHILE (i > 0 AND t[i] > k) DO
+            t[i+1] := t[i];
+            i := i-1;
+        END_WHILE //end of second loop
+        t[i+1] := k;
+        j := j+1;
+    END_WHILE //end of first loop
 END
